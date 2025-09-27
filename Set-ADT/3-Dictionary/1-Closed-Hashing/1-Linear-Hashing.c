@@ -156,15 +156,15 @@ bool inDictionary(Dictionary D, char data){
 void printDictionary(Dictionary D){
     for(int i = 0; i < SIZE; i++){
         if(D[i] == EMPTY){
-            printf(" EMPTY ->");
+            printf("EMPTY -> ");
         }
         else if(D[i] == DELETED){
-            printf(" DELETED ->");
+            printf("DELETED -> ");
         }
         else{
-            printf(" %c ->", D[i]);
+            printf("%c -> ", D[i]);
         }
     }
 
-    printf(" FINSIHED\n");
+    printf("FINSIHED\n");
 }
