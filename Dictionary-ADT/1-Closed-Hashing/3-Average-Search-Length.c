@@ -189,7 +189,7 @@ float avgSearchLength(Dictionary D){
 
     float size = 0;          
     for(int i = 0; i < SIZE; i++){
-        if(D[i] != EMPTY || D[i] != DELETED){
+        if(D[i] != EMPTY && D[i] != DELETED){
             size++;
         }
     }
