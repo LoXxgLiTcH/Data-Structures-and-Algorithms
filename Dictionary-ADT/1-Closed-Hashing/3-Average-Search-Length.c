@@ -9,31 +9,32 @@ typedef enum{
 
 typedef char Dictionary[SIZE];
 
-void initDictionary(Dictionary D);
-void insert(Dictionary D, char data, int hash);
-void delete(Dictionary D, char data, int hash);
-bool inDictionary(Dictionary D, char data, int hash);
-void printDictionary(Dictionary D);
-int searchLength(Dictionary D, char data, int hash);
-float avgSearchLength(Dictionary D);
+void initDictionary(Dictionary);
+int hash(char);
+void insert(Dictionary, char);
+void delete(Dictionary, char);
+bool inDictionary(Dictionary, char);
+void printDictionary(Dictionary);
+int searchLength(Dictionary, char);
+float avgSearchLength(Dictionary);
 
 int main(){
     Dictionary D;
 
     initDictionary(D);
 
-    insert(D, 'A', 1);
-    insert(D, 'B', 4);
-    insert(D, 'C', 9);
-    insert(D, 'D', 9);
-    insert(D, 'E', 0);
-    insert(D, 'F', 3);
-    insert(D, 'G', 4);
-    insert(D, 'H', 3);
+    insert(D, 'A');
+    insert(D, 'B');
+    insert(D, 'C');
+    insert(D, 'D');
+    insert(D, 'E');
+    insert(D, 'F');
+    insert(D, 'G');
+    insert(D, 'H');
 
     printDictionary(D);
 
-    bool found = inDictionary(D, 'B', 4);
+    bool found = inDictionary(D, 'B');
 
     printf("Is Data in Dictionary? ");
     (found) ? printf("Yes\n") : printf("No\n");
@@ -52,12 +53,29 @@ void initDictionary(Dictionary D){
 
 //Creates Hash Value
 int hash(char data){
-    int hash = data % SIZE;
-    return hash;
+    switch(data){
+        case 'A':
+        return 1;
+
+        case 'B':
+        case 'G':
+        return 4;
+
+        case 'C':
+        case 'D':
+        return 9;
+
+        case 'E':
+        return 0;
+
+        case 'F':
+        case 'H':
+        return 3;
+    }
 }
 
-void insert(Dictionary D, char data, int hash){
-    int start = hash;
+void insert(Dictionary D, char data){
+    int start = hash(data);
     int index = start; 
     int delCell = -1;
     bool isFull = false;
@@ -95,8 +113,8 @@ void insert(Dictionary D, char data, int hash){
     }
 }
 
-void delete(Dictionary D, char data, int hash){
-    int start = hash;
+void delete(Dictionary D, char data){
+    int start = hash(data);
     int index = start;
     bool finished = false;
 
@@ -122,8 +140,8 @@ void delete(Dictionary D, char data, int hash){
 }
 
 //Checks if data is in Dictionary
-bool inDictionary(Dictionary D, char data, int hash){
-    int start = hash;
+bool inDictionary(Dictionary D, char data){
+    int start = hash(data);
     int index = start;
     bool finished = false;
 
@@ -164,8 +182,8 @@ void printDictionary(Dictionary D){
     printf("FINSIHED\n");
 }
 
-int searchLength(Dictionary D, char data, int hash){
-    int start = hash;
+int searchLength(Dictionary D, char data){
+    int start = hash(data);
     int index = start;
     bool finished = false;
 
@@ -184,8 +202,8 @@ int searchLength(Dictionary D, char data, int hash){
 }
 
 float avgSearchLength(Dictionary D){
-    int sum = searchLength(D, 'A', 1) + searchLength(D, 'B', 4) + searchLength(D, 'C', 9) + searchLength(D, 'D', 9) + searchLength(D, 'E', 0)
-              + searchLength(D, 'F', 3) + searchLength(D, 'G', 4) + searchLength(D, 'H', 3);
+    int sum = searchLength(D, 'A') + searchLength(D, 'B') + searchLength(D, 'C') + searchLength(D, 'D') + searchLength(D, 'E')
+              + searchLength(D, 'F') + searchLength(D, 'G') + searchLength(D, 'H');
 
     float size = 0;          
     for(int i = 0; i < SIZE; i++){
