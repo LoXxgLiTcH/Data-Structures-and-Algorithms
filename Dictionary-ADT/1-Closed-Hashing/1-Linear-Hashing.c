@@ -9,12 +9,12 @@ typedef enum{
 
 typedef char Dictionary[SIZE];
 
-void initDictionary(Dictionary D);
-int hash(char data);
-void insert(Dictionary D, char data);
-void delete(Dictionary D, char data);
-bool inDictionary(Dictionary D, char data);
-void printDictionary(Dictionary D);
+void initDictionary(Dictionary);
+int hash(char);
+void insert(Dictionary, char);
+void delete(Dictionary, char);
+bool inDictionary(Dictionary, char);
+void printDictionary(Dictionary);
 
 int main(){
     Dictionary D;
