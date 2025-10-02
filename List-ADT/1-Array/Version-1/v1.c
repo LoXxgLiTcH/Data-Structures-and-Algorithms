@@ -24,14 +24,14 @@ int main(){
     insertFirst(&L, 'F');
     insertFirst(&L, 'G');
 
-    printf("Before Delete:\n");
+    printf("\nBefore Delete:\n");
     displayList(L);
 
     deleteElem(&L, 'A');
     deleteElem(&L, 'D');
     deleteElem(&L, 'F');
 
-    printf("After Delete:\n");
+    printf("\nAfter Delete:\n");
     displayList(L);
 
     int isFound = findElem(L, 'C');
