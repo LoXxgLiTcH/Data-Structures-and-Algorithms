@@ -11,15 +11,31 @@ typedef struct{
     int lastNdx;
 }Heap, List;
 
-void Insert(Heap, int);
-void Deletemin(Heap);
-void HeapSort(List);
+void Insert(Heap*, int);
+void Deletemin(Heap*);
+void HeapSort(List*);
 
 int main(){
 
     return 0;
 }
 
-void Insert(Heap H, int elem){
+void Insert(Heap *H, int elem){
+    if(H->lastNdx + 1 != MAX){
+        int child = ++H->lastNdx;
+        int parent = (child - 1) / 2;
+
+        while(child != 0 && H->elem[parent] > elem){
+            H->elem[child] = H->elem[parent];
+
+            child = parent;
+            parent = (child - 1) / 2;
+        }
+
+        H->elem[child] = elem;
+    }
+}
+
+void Deletemin(Heap *H){
     
 }
