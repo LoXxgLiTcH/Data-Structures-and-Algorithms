@@ -39,22 +39,28 @@ int main(){
     return 0;
 }
 
+// Initialize, make all indices NULL
 void initDictionary(Dictionary D){
     for(int i = 0; i < SIZE; i++){
         D[i] = NULL;
     }
 }
 
+// Returns an integer Hash indicating in which index to insert the Node
 int hash(char elem){
     return elem % SIZE;
 }
 
+// Inserts the element into the Dictionary
 void insert(Dictionary D, char elem){
     int index = hash(elem);
     nodetype *trav;
 
+    // While trav is not NULL AND there are no duplicates
+    // Note: trav is head of the index given by the hash function
     for(trav = &D[index]; *trav != NULL && (*trav)->elem != elem; trav = &(*trav)->next){}
 
+    // Checks if the loop has reached the end, meaning there were no duplicates
     if(*trav == NULL){
         nodetype temp = (nodetype)malloc(sizeof(struct node));
 
