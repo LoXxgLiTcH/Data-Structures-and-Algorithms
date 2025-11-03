@@ -1,7 +1,7 @@
 //Implementing Basic HeapSort
 /* Formulas to Remember: 
-        Get the Index of child nodes: 2 * (Index of Parent Node) + 1
-        Determine the index of the lowest level parent node: (Last index - 1) / 2
+        Get the Index of Child Nodes: 2 * (Parent Index) + 1
+        Determine the index of Parent Node: (Child Index - 1) / 2
 */
 #include <stdio.h>
 #define MAX 10
