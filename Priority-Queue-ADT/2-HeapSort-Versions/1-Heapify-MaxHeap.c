@@ -1,17 +1,17 @@
 #include <stdio.h>
-#define SIZE 0xFF
+#define SIZE 10
 
 typedef struct{
     int elem[SIZE];
     int count;
 }maxHeap;
 
-void maxSubHeapify(maxHeap*, int);
-void maxHeapifyTree(maxHeap*);
-void swap(int, int);
-void heapSort(maxHeap*);
+void maxSubHeapify(maxHeap*, int); // Makes the Subtree a Heap
+void maxHeapifyTree(maxHeap*); // Calls MaxSubHeapify
+void swap(int, int); // Swaps the root with the lowest level leaf node found at the rightmost
+void heapSort(maxHeap*); // Sorts in Ascending Order, Calls all Functions to Sort the Heap
 
 int main(){
-    int arr[] = {3, 5, 8, 2, 4, 8, 9, 1, 7, 10}; 
+    int arr[10] = {3, 5, 8, 2, 4, 8, 9, 1, 7, 10}; 
     return 0;
 }

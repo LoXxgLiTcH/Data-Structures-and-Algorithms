@@ -12,16 +12,16 @@
 #include <stdbool.h>
 #define MAX 10
 
-typedef struct{
+typedef struct {
     int elem[MAX];
     int lastNdx;
 }Tree;
 
-void initTree(Tree*);
-void insertTree(Tree*, int*);
-void Insert(Tree*, int);
-int Deletemin(Tree*);
-void printTree(Tree);
+void initTree(Tree*); // Initializes tree by making lastNdx = -1
+void insertTree(Tree*, int*); // Places the values from the array to the Tree 
+void Insert(Tree*, int); // Inserts a value to the Tree making sure P.O.T rule is satisfied
+int Deletemin(Tree*); // Returns the smallest value (the Root) and fixes the Tree making sure P.O.T rule is satisfied
+void printTree(Tree); // Prints the Tree
 
 int main(){
     Tree T;
@@ -69,6 +69,9 @@ void Insert(Tree *T, int elem){
 
         // Insert at the right place in the tree
         T->elem[child] = elem;
+    }
+    else{
+        printf("Tree is Full...");
     }
 }
 
