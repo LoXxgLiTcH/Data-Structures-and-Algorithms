@@ -1,4 +1,4 @@
-// MinHeap Implementation of Partially Ordered Tree
+// MaxHeap Implementation of Partially Ordered Tree
 // Similar to basics.c but without the comments for hints
 // Uses maxHeap which makes the Root the Biggest Element
 #include <stdio.h>
