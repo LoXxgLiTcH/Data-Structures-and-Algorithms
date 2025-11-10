@@ -1,5 +1,5 @@
 // MinHeap Implementation of Partially Ordered Tree
-// Similar to basics.c but without the comments for hints
+// Similar to basics.c of Trees but without the comments for hints
 #include <stdio.h>
 #include <stdbool.h>
 #define MAX 10
@@ -55,7 +55,7 @@ void Insert(minHeap *H, int elem){
         H->elem[child] = elem;
     }
     else{
-        printf("Tree is Full...");
+        printf("Tree is Full...\n");
     }
 }
 
@@ -63,7 +63,7 @@ int Deletemin(minHeap* H){
     int minValue = -1;
 
     if(H->lastNdx < 0){
-        printf("Tree is Empty...");
+        printf("Tree is Empty...\n");
         return minValue;
     }
 

@@ -1,5 +1,5 @@
 // MaxHeap Implementation of Partially Ordered Tree
-// Similar to basics.c but without the comments for hints
+// Similar to basics.c of Trees but without the comments for hints
 // Uses maxHeap which makes the Root the Biggest Element
 #include <stdio.h>
 #include <stdbool.h>
@@ -54,7 +54,7 @@ void Insert(maxHeap* H, int elem){
         H->elem[child] = elem;
     }
     else{
-        printf("Tree is Full...");
+        printf("Tree is Full...\n");
     }
 }
 
@@ -97,7 +97,7 @@ int Deletemax(maxHeap* H){
         }
     }
     else{
-        printf("Tree is Empty...");
+        printf("Tree is Empty...\n");
     }
     return maxValue;
 }
@@ -112,6 +112,6 @@ void printTree(maxHeap H){
         printf("%d\n", H.elem[i]);
     }
     else{
-        printf("Tree is Empty...");
+        printf("Tree is Empty...\n");
     }
 }
