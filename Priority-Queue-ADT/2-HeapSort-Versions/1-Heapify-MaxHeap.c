@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #define SIZE 0xFF
 typedef struct{
     int elem[SIZE];
@@ -19,7 +20,8 @@ void swap(int*, int*); // Swaps the root with the lowest level leaf node found a
 void heapSort(maxHeap*); // Sorts in Ascending Order, Calls all MaxHeap Specific Functions to Sort the Heap
 
 // Printing Tree Operation
-void printTree(maxHeap);
+void printTreeList(maxHeap);
+void visualizeTree(maxHeap, int, int, char*, int, int);
 
 int main(){
     int arr[10] = {3, 5, 6, 2, 4, 8, 9, 1, 7, 10};
@@ -28,15 +30,21 @@ int main(){
 
     insertTree(&H, arr, 10);
     printf("Before Heapify:\n");
-    printTree(H);
+    printTreeList(H);
+    printf("Visualize Tree:\n");
+    visualizeTree(H, H.count, 0, "", 0, 1);
 
     maxHeapifyTree(&H);
     printf("\nAfter Heapify:\n");
-    printTree(H);
+    printTreeList(H);
+    printf("Visualize Tree:\n");
+    visualizeTree(H, H.count, 0, "", 0, 1);
 
     heapSort(&H);
     printf("\nAfter Heapsort:\n");
-    printTree(H);
+    printTreeList(H);
+    printf("Visualize Tree:\n");
+    visualizeTree(H, H.count, 0, "", 0, 1);
     return 0;
 }
 
@@ -116,7 +124,7 @@ void heapSort(maxHeap* H){
     H->count = originalCount;
 }
 
-void printTree(maxHeap H){
+void printTreeList(maxHeap H){
     int i;
     printf("Completed Tree:\n");
     for(i = 0; i < H.count - 1; i++){
@@ -124,3 +132,31 @@ void printTree(maxHeap H){
     }
     printf(" %d\n", H.elem[i]);
 }
+
+void visualizeTree(maxHeap H, int n, int index, char *prefix, int isLeft, int isRoot) {
+    if (index >= n) return;
+
+    if (isRoot) {
+        printf("%d\n", H.elem[index]);
+    } else {
+        printf("%s", prefix);
+        printf("%s-- %d\n", isLeft ? "|": "\\", H.elem[index]);
+    }
+
+    char newPrefix[200];
+    if (isRoot) {
+        newPrefix[0] = '\0';
+    } else {
+        sprintf(newPrefix, "%s%s", prefix, isLeft ? "|   " : "    ");
+    }
+
+    int left  = 2*index + 1;
+    int right = 2*index + 2;
+
+    if (left < n)
+        visualizeTree(H, n, left, newPrefix, 1, 0);
+
+    if (right < n)
+        visualizeTree(H, n, right, newPrefix, 0, 0);
+}
+  
