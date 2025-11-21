@@ -128,7 +128,7 @@
             for(trav = T; *trav != NULL && (*trav)->elem != elem; 
                 trav = ((*trav)->elem > elem) ? &(*trav)->LC : &(*trav)->RC){}
             if(*trav != NULL){
-                // Has Both Children
+                // Runs if Node to be Deleted Has Both Children
                 BST temp;
                 if((*trav)->LC != NULL && (*trav)->RC != NULL){
                     // Successor using Min

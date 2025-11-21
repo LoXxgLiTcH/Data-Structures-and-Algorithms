@@ -114,7 +114,7 @@ void maxHeapifyTree(maxHeap* H){
 }
 
 void heapSort(maxHeap* H){
-    maxHeapifyTree(H);
+    maxHeapifyTree(H);  
     int originalCount = H->count;
     while(H->count > 1){
         swap(&H->elem[0], &H->elem[H->count - 1]);
