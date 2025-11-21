@@ -1,5 +1,5 @@
 // Basic Implementation of Binary Search
-// Rule of Binary Search Algorithm, numbers to be sorted must be in order
+// Rule of Binary Search Algorithm, numbers to be searched must be in order
 #include <stdio.h>
 #include <stdbool.h>
 #define MAX 10
@@ -13,10 +13,10 @@ int main(){
     scanf("%d", &elem);
 
     if(binarySearch(arr, elem)){
-        printf("Element Found...\n");
+        printf("Element %d Found...\n", elem);
     }
     else{
-        printf("Element not Found...\n");
+        printf("Element %d not Found...\n", elem);
     }
     return 0;
 }
@@ -27,15 +27,9 @@ bool binarySearch(int arr[], int elem){
     int mean = LB + (RB - LB) / 2;
 
     while(LB <= RB && arr[mean] != elem){
-        if(arr[mean] > elem)
-        {
-            RB = mean - 1;
-        }
-        else{
-            LB = mean + 1;
-        }
+        (arr[mean] > elem) ? (RB = mean - 1) : (LB = mean + 1);
         mean = LB + (RB - LB) / 2; 
     }
 
-    return (arr[mean] == elem) ? 1 : 0;
+    return (LB > RB) ? 0 : 1;
 }
