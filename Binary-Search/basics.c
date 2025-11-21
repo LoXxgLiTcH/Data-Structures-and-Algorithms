@@ -24,18 +24,18 @@ int main(){
 bool binarySearch(int arr[], int elem){
     int LB = 0;
     int RB = MAX - 1;
-    int middle = LB + (RB - LB) / 2;
+    int mean = LB + (RB - LB) / 2;
 
-    while(LB <= RB && arr[middle] != elem){
-        if(arr[middle] > elem)
+    while(LB <= RB && arr[mean] != elem){
+        if(arr[mean] > elem)
         {
-            RB = middle - 1;
+            RB = mean - 1;
         }
         else{
-            LB = middle + 1;
+            LB = mean + 1;
         }
-        middle = LB + (RB - LB) / 2; 
+        mean = LB + (RB - LB) / 2; 
     }
 
-    return (arr[middle] == elem) ? 1 : 0;
+    return (arr[mean] == elem) ? 1 : 0;
 }
