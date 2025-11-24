@@ -13,7 +13,10 @@
     void insertAll(BST*, int[], int);
     void Insert(BST*, int);
     void Delete(BST*, int);
+
+    // Search Functions
     int Member(BST, int);
+    int MemberRecursion(BST, int);
     BST* Min(BST*);
     BST* Max(BST*);
     // --- New Visualization Functions ---
@@ -27,11 +30,18 @@
         int arr[] = {4, 7, 2, 3, 6, 1, 5, 8, 9, 10, 15, 28, 75, 17, 34};
         int size = sizeof(arr) / sizeof(arr[0]);
         BST S;
+        int elem;
 
         // --- SETUP: Full Tree for Deletion Cases ---
         printf("\n--- Test Setup: Initial Full Tree ---\n");
         initTree(&S);
         insertAll(&S, arr, size);
+        printf("Element to be Searched: ");
+        scanf("%d", &elem);
+        printf("Search Member (Non-Recursion):\n");
+        Member(S, elem);
+        printf("Search Member (Recursion):\n");
+        MemberRecursion(S, elem);
         Visualize(S);
 
         // --- TEST 1, 2, 9: Leaf and Simple Deletion ---
@@ -169,6 +179,19 @@
             printf("Element not Found...\n");
             return 0;
         }
+    }
+
+    int MemberRecursion(BST T, int elem){
+        if(T == NULL){
+            printf("Element Not Found...\n");
+            return 0;
+        }
+        if(T->elem == elem){
+            printf("Element Found...\n");
+            return 1;
+        }
+        
+        return (T->elem < elem) ? MemberRecursion(T->RC, elem) : MemberRecursion(T->LC, elem);
     }
 
     BST* Min(BST *T){
